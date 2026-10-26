@@ -24,7 +24,7 @@ if [ -z "$(docker images -q "$IMAGE_NAME")" ]; then
 fi
 docker run --rm -u "$(id -u):$(id -g)" \
     -e BUILD_VERSION -e "BUILD_TYPE=${BUILD_TYPE:-dev}" -e "CUSTOM_VERSION=${CUSTOM_VERSION:-}" \
-    -v "$(pwd)":/src -w /src "$IMAGE_NAME" make clean all
+    -v "$(pwd)":/src:z -w /src "$IMAGE_NAME" make clean all
 mv installer.elf "$OUTPUT_ELF"
 make host HOST_PAYLOAD="$OUTPUT_ELF"
 mv webkit-autoloader-host.py "$HOST_PY"
