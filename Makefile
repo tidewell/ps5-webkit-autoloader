@@ -116,8 +116,8 @@ $(ELF): registry icons $(SRCS) $(wildcard include/*.h) $(INSTALLER_COMMON_HEADER
 	$(STRIP) $@
 
 # The setup host embeds the installer ELF. It packages both chains (Relapse as
-# default index.html, Poops as poops.html) so firmwares where Relapse is
-# unsupported (9.05, 11.40) are automatically routed to Poops.
+# default index.html, Poops as poops.html) so firmware where Relapse is
+# unsupported (9.05) is automatically routed to Poops.
 HOST_RELAPSE := build/host/relapse.html
 HOST_POOPS := build/host/poops.html
 

@@ -88,8 +88,8 @@ network interface, but no Internet access.
 - `make host HOST_PAYLOAD=<installer.elf>`: build standalone setup pages for both
   chains (Relapse and Poops) embedding that installer, then package them via
   remote-loader's `tools/build_host.py` into `webkit-autoloader-host.py`. At runtime,
-  the host serves Relapse by default and automatically routes firmwares incompatible
-  with Relapse (9.05, 11.40) to Poops.
+  the host serves Relapse by default and automatically routes firmware incompatible
+  with Relapse (9.05) to Poops.
   Use a versioned ELF path outside the native `installer.elf` target when building
   the host on a machine without the SDK.
 - `make dev`: serve the generated chain pages on localhost:8123.
