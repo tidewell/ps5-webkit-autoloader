@@ -12,7 +12,8 @@ All notable changes to this project will be documented in this file.
 ## [v0.6.1] - 2026-10-08
 
 * **9.05, 11.40 & 11.60**: Added missing offsets to fix Poops support.
-  *(Note: Relapse remains unsupported on 9.05 and 11.40)*
+  *(Note: Relapse remains unsupported on 9.05)*
+* **11.40**: Enabled Relapse support for firmware 11.40.
 
 ## [v0.6.0] - 2026-10-07
 
