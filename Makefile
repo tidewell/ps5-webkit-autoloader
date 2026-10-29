@@ -34,7 +34,7 @@ CHAINS := poops relapse
 PAGE_CSS ?= frontend/autoloader/style.css
 PAGE_JS ?= frontend/autoloader/app.js
 PAGE_CONFIG := build/page-config.js
-ELFLDR_TAG := v0.26-bb1e117
+ELFLDR_TAG ?= $(shell git -C third_party/ps5-elfldr describe --tags --always 2>/dev/null || echo v0.27-b57d0e9)
 ELFLDR_VIRTUAL := shared/elfldr-ps5-$(ELFLDR_TAG).elf
 PAGE_FLAGS := --elfldr $(ELFLDR_VIRTUAL)=build/deps/elfldr.elf \
               $(foreach file,$(PAGE_CSS),--css "$(file)") \
@@ -47,7 +47,7 @@ REGISTRY := include/file_registry.h include/file_registry.c
 ICONS := assets/icon0.png assets/icon.ico
 INSTALLER_LOGO := frontend/installer-page/logo.svg
 HOST_PAYLOAD ?= $(ELF)
-PAYLOAD_TAG ?= $(shell git -C third_party/ps5-unified-autoloader describe --tags --always 2>/dev/null || echo v0.1.5-915a65e)
+PAYLOAD_TAG ?= $(shell git -C third_party/ps5-unified-autoloader describe --tags --always 2>/dev/null || echo v0.1.6-e7093cd)
 AUTOLOAD_PAYLOAD_VIRTUAL ?= ps5-unified-autoloader-$(PAYLOAD_TAG).elf
 HOST_PAYLOAD_VIRTUAL ?= $(if $(filter-out installer.elf,$(notdir $(HOST_PAYLOAD))),$(notdir $(HOST_PAYLOAD)),webkit-autoloader-installer_v$(BUILD_VERSION).elf)
 
@@ -116,8 +116,8 @@ $(ELF): registry icons $(SRCS) $(wildcard include/*.h) $(INSTALLER_COMMON_HEADER
 	$(STRIP) $@
 
 # The setup host embeds the installer ELF. It packages both chains (Relapse as
-# default index.html, Poops as poops.html) so firmware where Relapse is
-# unsupported (9.05) is automatically routed to Poops.
+# default index.html, Poops as poops.html) so firmwares where Relapse is
+# unsupported (9.05) are automatically routed to Poops.
 HOST_RELAPSE := build/host/relapse.html
 HOST_POOPS := build/host/poops.html
 
